@@ -1,0 +1,1340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="latamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="codeAddress" />
+          </Key>
+          <Property Name="codeAddress" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="entityGUID" Type="varchar" MaxLength="255" />
+          <Property Name="street" Type="varchar(max)" />
+          <Property Name="city" Type="varchar" MaxLength="255" />
+          <Property Name="country" Type="varchar" MaxLength="255" />
+          <Property Name="contactemail1" Type="varchar" MaxLength="255" />
+          <Property Name="contactemail2" Type="varchar" MaxLength="255" />
+          <Property Name="addressType" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Administradores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgentClientRel">
+          <Key>
+            <PropertyRef Name="codeAgentClient" />
+          </Key>
+          <Property Name="codeAgentClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="255" />
+          <Property Name="Agent" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="id_ciudad" />
+          </Key>
+          <Property Name="id_ciudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="capital" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="configuraciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="configuracion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="valor" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="consignatario">
+          <Key>
+            <PropertyRef Name="idConsignatario" />
+          </Key>
+          <Property Name="idConsignatario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="AccessPassword" Type="varchar" MaxLength="255" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="sexo" Type="varchar" MaxLength="2" />
+          <Property Name="cedula" Type="varchar" MaxLength="50" />
+          <Property Name="sector" Type="varchar" MaxLength="50" />
+          <Property Name="isEmailVerified" Type="bit" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" />
+          <Property Name="fecha_creacion" Type="date" Nullable="false" />
+          <Property Name="infoInMagaya" Type="bit" />
+        </EntityType>
+        <EntityType Name="CustomLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="LogType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RequestUri" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RequestedBy" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="direcciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="text" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="Sector" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entities">
+          <Key>
+            <PropertyRef Name="entityCode" />
+          </Key>
+          <Property Name="entityCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar(max)" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="30" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="AccountNumber" Type="varchar(max)" />
+          <Property Name="ParentName" Type="varchar" MaxLength="255" />
+          <Property Name="IsPrepaid" Type="bit" />
+          <Property Name="MobilePhone" Type="varchar" MaxLength="255" />
+          <Property Name="EntityID" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="ExporterID" Type="varchar" MaxLength="50" />
+          <Property Name="ExporterIDType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="estados">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="iso_3166-2" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventDefinition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncludeInTracking" Type="bit" Nullable="false" />
+          <Property Name="OwnerNumber" Type="varchar" MaxLength="255" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="EventCode" />
+          </Key>
+          <Property Name="Date" Type="datetime" />
+          <Property Name="WRCode" Type="varchar" MaxLength="255" />
+          <Property Name="EventCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventDefinitionName" Type="varchar" MaxLength="255" />
+          <Property Name="IncludeInTracking" Type="bit" />
+          <Property Name="OwnerType" Type="varchar" MaxLength="255" />
+          <Property Name="OwnerNumber" Type="varchar" MaxLength="255" />
+          <Property Name="OwnerGUID" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="line">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="weight" Type="int" Nullable="false" />
+          <Property Name="turn" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mensajes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mensaje" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModeOfTransportation">
+          <Key>
+            <PropertyRef Name="modeTransportationCode" />
+          </Key>
+          <Property Name="modeTransportationCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="Method" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Details" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="DetailsURL" Type="nvarchar" MaxLength="500" />
+          <Property Name="SentTo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="IsRead" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsReminder" Type="bit" />
+          <Property Name="Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="NotificationType" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PasswordRecovery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="RecoveryKey" Type="uniqueidentifier" />
+          <Property Name="date_to" Type="date" />
+          <Property Name="IsRecovered" Type="bit" />
+        </EntityType>
+        <EntityType Name="PaymentTerms">
+          <Key>
+            <PropertyRef Name="codePaymentTerms" />
+          </Key>
+          <Property Name="codePaymentTerms" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="NetDueDays" Type="int" />
+          <Property Name="DiscountPercentage" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountPaidDays" Type="int" />
+          <Property Name="clientGUID" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sector" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="idSexo" />
+          </Key>
+          <Property Name="idSexo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ExceptionLoggingToDataBase">
+          <Key>
+            <PropertyRef Name="Logid" />
+          </Key>
+          <Property Name="Logid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExceptionMsg" Type="varchar" MaxLength="100" />
+          <Property Name="ExceptionType" Type="varchar" MaxLength="100" />
+          <Property Name="ExceptionSource" Type="nvarchar(max)" />
+          <Property Name="ExceptionURL" Type="varchar" MaxLength="100" />
+          <Property Name="Logdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="binary" MaxLength="64" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordSalt" Type="binary" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WareHouseAttach">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Identifier" Type="int" Nullable="false" />
+          <Property Name="OwnerGUID" Type="varchar" MaxLength="255" />
+          <Property Name="OwnerType" Type="varchar" MaxLength="255" />
+          <Property Name="Size" Type="int" />
+          <Property Name="IsInternal" Type="bit" />
+          <Property Name="IsImage" Type="bit" />
+          <Property Name="Extension" Type="varchar" MaxLength="255" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Imagen" Type="varbinary(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WarehouseReceipts">
+          <Key>
+            <PropertyRef Name="codeWR" />
+          </Key>
+          <Property Name="codeWR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="Number" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedByName" Type="varchar" MaxLength="255" />
+          <Property Name="ModeOfTransportCode" Type="int" />
+          <Property Name="IssuedBy" Type="varchar" MaxLength="255" />
+          <Property Name="Shipper" Type="varchar" MaxLength="255" />
+          <Property Name="Consignee" Type="varchar" MaxLength="255" />
+          <Property Name="DestinationAgent" Type="varchar" MaxLength="255" />
+          <Property Name="CreatorNetworkID" Type="int" />
+          <Property Name="TotalPieces" Type="int" />
+          <Property Name="TotalWeight" Type="varchar" MaxLength="50" />
+          <Property Name="TotalVolume" Type="varchar" MaxLength="50" />
+          <Property Name="TotalVolumeWeight" Type="varchar" MaxLength="50" />
+          <Property Name="ChargeableWeight" Type="varchar" MaxLength="50" />
+          <Property Name="TotalValue" Type="float" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+          <Property Name="HasAttachments" Type="bit" />
+          <Property Name="BillingClient" Type="varchar" MaxLength="255" />
+          <Property Name="IsOnline" Type="bit" />
+          <Property Name="IsLiquidated" Type="bit" />
+          <Property Name="TrackingNumber" Type="varchar" MaxLength="255" />
+          <Property Name="PackageName" Type="varchar" MaxLength="255" />
+          <Property Name="WHRItemID" Type="int" />
+          <Property Name="Length" Type="varchar" MaxLength="50" />
+          <Property Name="Height" Type="varchar" MaxLength="50" />
+          <Property Name="Width" Type="varchar" MaxLength="50" />
+          <Property Name="Weight" Type="varchar" MaxLength="50" />
+          <Property Name="ContainedPiecesWeightIncluded" Type="bit" />
+          <Property Name="Volume" Type="varchar" MaxLength="50" />
+          <Property Name="VolumeWeight" Type="varchar" MaxLength="50" />
+          <Property Name="PieceWeight" Type="varchar" MaxLength="50" />
+          <Property Name="PieceVolume" Type="varchar" MaxLength="50" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="LastItemID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WareHouseReceiptsItems">
+          <Key>
+            <PropertyRef Name="codeWHItem" />
+          </Key>
+          <Property Name="codeWHItem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WarehouseReceiptGUID" Type="varchar" MaxLength="255" />
+          <Property Name="GUID" Type="varchar(max)" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
+          <Property Name="Version" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+          <Property Name="Pieces" Type="int" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="PieceQuantity" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IsSummarized" Type="bit" />
+          <Property Name="TrackingNumber" Type="varchar(max)" />
+          <Property Name="PackageName" Type="varchar" MaxLength="255" />
+          <Property Name="WHRItemID" Type="int" />
+          <Property Name="Length" Type="float" />
+          <Property Name="Height" Type="float" />
+          <Property Name="Width" Type="float" />
+          <Property Name="Weight" Type="float" />
+          <Property Name="ContainedPiecesWeightIncluded" Type="bit" />
+          <Property Name="Volume" Type="float" />
+          <Property Name="VolumeWeight" Type="float" />
+          <Property Name="PieceWeight" Type="float" />
+          <Property Name="PieceVolume" Type="float" />
+          <Property Name="PackageType" Type="varchar" MaxLength="255" />
+          <Property Name="InShipmentGUID" Type="varchar(max)" />
+          <Property Name="IncludeInSED" Type="bit" />
+          <Property Name="IsContainer" Type="bit" />
+          <Property Name="OutMasterWayBillNumber" Type="varchar(max)" />
+          <Property Name="OutHouseWayBillNumber" Type="varchar(max)" />
+          <Property Name="InMasterWayBillNumber" Type="varchar(max)" />
+          <Property Name="InHouseWayBillNumber" Type="varchar(max)" />
+          <Property Name="ArrivalDate" Type="datetime" />
+          <Property Name="WarehouseReceiptNumber" Type="varchar" MaxLength="255" />
+          <Property Name="OrderIndex" Type="int" />
+          <Property Name="IsPallet" Type="bit" />
+          <Property Name="IsOverstock" Type="bit" />
+          <Property Name="NotLoaded" Type="bit" />
+          <Property Name="InTask" Type="bit" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="OutShipmentGUID" Type="varchar" MaxLength="50" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="LastReceptionNetworkID" Type="varchar" MaxLength="50" />
+          <Property Name="ShipmentType" Type="varchar" MaxLength="50" />
+          <Property Name="OutDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ciudades_estados">
+          <End Role="estados" Type="Self.estados" Multiplicity="1" />
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estados">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="ciudades">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_consignatario_consignatario">
+          <End Role="consignatario" Type="Self.consignatario" Multiplicity="1" />
+          <End Role="consignatario1" Type="Self.consignatario" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="consignatario">
+              <PropertyRef Name="idConsignatario" />
+            </Principal>
+            <Dependent Role="consignatario1">
+              <PropertyRef Name="idConsignatario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="buscaReceiptUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="consignee" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ExceptionLoggingToDataBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExceptionMsg" Type="varchar" Mode="In" />
+          <Parameter Name="ExceptionType" Type="varchar" Mode="In" />
+          <Parameter Name="ExceptionSource" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ExceptionURL" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="lista_estados_ciudades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="pa_ususarioxemail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="latamModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Administradores" EntityType="Self.Administradores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgentClientRel" EntityType="Self.AgentClientRel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="configuraciones" EntityType="Self.configuraciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="consignatario" EntityType="Self.consignatario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomLog" EntityType="Self.CustomLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="direcciones" EntityType="Self.direcciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entities" EntityType="Self.Entities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estados" EntityType="Self.estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventDefinition" EntityType="Self.EventDefinition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="line" EntityType="Self.line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mensajes" EntityType="Self.mensajes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModeOfTransportation" EntityType="Self.ModeOfTransportation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasswordRecovery" EntityType="Self.PasswordRecovery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTerms" EntityType="Self.PaymentTerms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sector" EntityType="Self.Sector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ExceptionLoggingToDataBase" EntityType="Self.Tbl_ExceptionLoggingToDataBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WareHouseAttach" EntityType="Self.WareHouseAttach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WarehouseReceipts" EntityType="Self.WarehouseReceipts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WareHouseReceiptsItems" EntityType="Self.WareHouseReceiptsItems" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ciudades_estados" Association="Self.FK_ciudades_estados">
+            <End Role="estados" EntitySet="estados" />
+            <End Role="ciudades" EntitySet="ciudades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_consignatario_consignatario" Association="Self.FK_consignatario_consignatario">
+            <End Role="consignatario" EntitySet="consignatario" />
+            <End Role="consignatario1" EntitySet="consignatario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="latamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="latamEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="buscaReceiptUsuario" ReturnType="Collection(latamModel.buscaReceiptUsuario_Result)">
+          <Parameter Name="consignee" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pa_ususarioxemail" ReturnType="Collection(latamModel.pa_ususarioxemail_Result)">
+          <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ExceptionLoggingToDataBase">
+            <Parameter Name="ExceptionMsg" Mode="In" Type="String" />
+            <Parameter Name="ExceptionType" Mode="In" Type="String" />
+            <Parameter Name="ExceptionSource" Mode="In" Type="String" />
+            <Parameter Name="ExceptionURL" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Address" EntityType="latamModel.Address" />
+          <EntitySet Name="Administradores" EntityType="latamModel.Administradores" />
+          <EntitySet Name="AgentClientRel" EntityType="latamModel.AgentClientRel" />
+          <EntitySet Name="ciudades" EntityType="latamModel.ciudades" />
+          <EntitySet Name="configuraciones" EntityType="latamModel.configuraciones" />
+          <EntitySet Name="CustomLog" EntityType="latamModel.CustomLog" />
+          <EntitySet Name="direcciones" EntityType="latamModel.direcciones" />
+          <EntitySet Name="Entities" EntityType="latamModel.Entities" />
+          <EntitySet Name="estados" EntityType="latamModel.estados" />
+          <EntitySet Name="EventDefinition" EntityType="latamModel.EventDefinition" />
+          <EntitySet Name="Events" EntityType="latamModel.Events" />
+          <EntitySet Name="line" EntityType="latamModel.line" />
+          <EntitySet Name="mensajes" EntityType="latamModel.mensajes" />
+          <EntitySet Name="ModeOfTransportation" EntityType="latamModel.ModeOfTransportation" />
+          <EntitySet Name="Notification" EntityType="latamModel.Notification" />
+          <EntitySet Name="PasswordRecovery" EntityType="latamModel.PasswordRecovery" />
+          <EntitySet Name="PaymentTerms" EntityType="latamModel.PaymentTerms" />
+          <EntitySet Name="Roles" EntityType="latamModel.Roles" />
+          <EntitySet Name="Sexo" EntityType="latamModel.Sexo" />
+          <EntitySet Name="Tbl_ExceptionLoggingToDataBase" EntityType="latamModel.Tbl_ExceptionLoggingToDataBase" />
+          <EntitySet Name="Users" EntityType="latamModel.Users" />
+          <EntitySet Name="WareHouseAttach" EntityType="latamModel.WareHouseAttach" />
+          <EntitySet Name="WarehouseReceipts" EntityType="latamModel.WarehouseReceipts" />
+          <EntitySet Name="WareHouseReceiptsItems" EntityType="latamModel.WareHouseReceiptsItems" />
+          <AssociationSet Name="FK_ciudades_estados" Association="latamModel.FK_ciudades_estados">
+            <End Role="estados" EntitySet="estados" />
+            <End Role="ciudades" EntitySet="ciudades" />
+          </AssociationSet>
+          <FunctionImport Name="lista_estados_ciudades" ReturnType="Collection(latamModel.lista_estados_ciudades_Result)" />
+          <EntitySet Name="consignatario" EntityType="latamModel.consignatario" />
+          <AssociationSet Name="FK_consignatario_consignatario" Association="latamModel.FK_consignatario_consignatario">
+            <End Role="consignatario" EntitySet="consignatario" />
+            <End Role="consignatario1" EntitySet="consignatario" />
+          </AssociationSet>
+          <EntitySet Name="Sector" EntityType="latamModel.Sector" />
+          </EntityContainer>
+        <ComplexType Name="buscaReceiptUsuario_Result">
+          <Property Type="String" Name="Number" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="GUID" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="TotalPieces" Nullable="true" />
+          <Property Type="String" Name="TotalVolumeWeight" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TotalVolume" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TotalWeight" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="pa_ususarioxemail_Result">
+          <Property Type="Int32" Name="idConsignatario" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Add1" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cedula" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sector" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="direccionUsuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="ciudad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="sexoUsuario" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="codeAddress" />
+          </Key>
+          <Property Name="codeAddress" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="entityGUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="street" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contactemail1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contactemail2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="addressType" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Administradores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AgentClientRel">
+          <Key>
+            <PropertyRef Name="codeAgentClient" />
+          </Key>
+          <Property Name="codeAgentClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Agent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="id_ciudad" />
+          </Key>
+          <Property Name="id_ciudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="ciudad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="capital" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="estados" Relationship="latamModel.FK_ciudades_estados" FromRole="ciudades" ToRole="estados" />
+        </EntityType>
+        <EntityType Name="configuraciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="configuracion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CustomLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RequestUri" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RequestedBy" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="direcciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Sector" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entities">
+          <Key>
+            <PropertyRef Name="entityCode" />
+          </Key>
+          <Property Name="entityCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ParentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsPrepaid" Type="Boolean" />
+          <Property Name="MobilePhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EntityID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExporterID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExporterIDType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="estados">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="iso_3166_2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ciudades" Relationship="latamModel.FK_ciudades_estados" FromRole="estados" ToRole="ciudades" />
+        </EntityType>
+        <EntityType Name="EventDefinition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IncludeInTracking" Type="Boolean" Nullable="false" />
+          <Property Name="OwnerNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="EventCode" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="WRCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EventCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventDefinitionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IncludeInTracking" Type="Boolean" />
+          <Property Name="OwnerType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerGUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="line">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="weight" Type="Int32" Nullable="false" />
+          <Property Name="turn" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mensajes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mensaje" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ModeOfTransportation">
+          <Key>
+            <PropertyRef Name="modeTransportationCode" />
+          </Key>
+          <Property Name="modeTransportationCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Method" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DetailsURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SentTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="IsRead" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsReminder" Type="Boolean" />
+          <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NotificationType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PasswordRecovery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecoveryKey" Type="Guid" />
+          <Property Name="date_to" Type="DateTime" Precision="0" />
+          <Property Name="IsRecovered" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PaymentTerms">
+          <Key>
+            <PropertyRef Name="codePaymentTerms" />
+          </Key>
+          <Property Name="codePaymentTerms" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NetDueDays" Type="Int32" />
+          <Property Name="DiscountPercentage" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountPaidDays" Type="Int32" />
+          <Property Name="clientGUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="idSexo" />
+          </Key>
+          <Property Name="idSexo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sexo1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ExceptionLoggingToDataBase">
+          <Key>
+            <PropertyRef Name="Logid" />
+          </Key>
+          <Property Name="Logid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExceptionMsg" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionURL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Logdate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="Binary" Nullable="false" MaxLength="64" FixedLength="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordSalt" Type="Binary" Nullable="false" MaxLength="128" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="WareHouseAttach">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Identifier" Type="Int32" Nullable="false" />
+          <Property Name="OwnerGUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Size" Type="Int32" />
+          <Property Name="IsInternal" Type="Boolean" />
+          <Property Name="IsImage" Type="Boolean" />
+          <Property Name="Extension" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="WarehouseReceipts">
+          <Key>
+            <PropertyRef Name="codeWR" />
+          </Key>
+          <Property Name="codeWR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedByName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModeOfTransportCode" Type="Int32" />
+          <Property Name="IssuedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Shipper" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Consignee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DestinationAgent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatorNetworkID" Type="Int32" />
+          <Property Name="TotalPieces" Type="Int32" />
+          <Property Name="TotalWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalVolume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalVolumeWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChargeableWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalValue" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HasAttachments" Type="Boolean" />
+          <Property Name="BillingClient" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsOnline" Type="Boolean" />
+          <Property Name="IsLiquidated" Type="Boolean" />
+          <Property Name="TrackingNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PackageName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WHRItemID" Type="Int32" />
+          <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Height" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Width" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContainedPiecesWeightIncluded" Type="Boolean" />
+          <Property Name="Volume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VolumeWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PieceWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PieceVolume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="LastItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WareHouseReceiptsItems">
+          <Key>
+            <PropertyRef Name="codeWHItem" />
+          </Key>
+          <Property Name="codeWHItem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WarehouseReceiptGUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Version" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Pieces" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PieceQuantity" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsSummarized" Type="Boolean" />
+          <Property Name="TrackingNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PackageName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WHRItemID" Type="Int32" />
+          <Property Name="Length" Type="Double" />
+          <Property Name="Height" Type="Double" />
+          <Property Name="Width" Type="Double" />
+          <Property Name="Weight" Type="Double" />
+          <Property Name="ContainedPiecesWeightIncluded" Type="Boolean" />
+          <Property Name="Volume" Type="Double" />
+          <Property Name="VolumeWeight" Type="Double" />
+          <Property Name="PieceWeight" Type="Double" />
+          <Property Name="PieceVolume" Type="Double" />
+          <Property Name="PackageType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InShipmentGUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IncludeInSED" Type="Boolean" />
+          <Property Name="IsContainer" Type="Boolean" />
+          <Property Name="OutMasterWayBillNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OutHouseWayBillNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InMasterWayBillNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InHouseWayBillNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalDate" Type="DateTime" Precision="3" />
+          <Property Name="WarehouseReceiptNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <Property Name="IsPallet" Type="Boolean" />
+          <Property Name="IsOverstock" Type="Boolean" />
+          <Property Name="NotLoaded" Type="Boolean" />
+          <Property Name="InTask" Type="Boolean" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="OutShipmentGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LastReceptionNetworkID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShipmentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OutDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_ciudades_estados">
+          <End Type="latamModel.estados" Role="estados" Multiplicity="1" />
+          <End Type="latamModel.ciudades" Role="ciudades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estados">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="ciudades">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="lista_estados_ciudades_Result">
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ciudad" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="id_ciudad" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="consignatario">
+          <Key>
+            <PropertyRef Name="idConsignatario" />
+          </Key>
+          <Property Name="idConsignatario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AccessPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sexo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sector" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isEmailVerified" Type="Boolean" />
+          <Property Name="ActivationCode" Type="Guid" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="infoInMagaya" Type="Boolean" />
+          <NavigationProperty Name="consignatario1" Relationship="latamModel.FK_consignatario_consignatario" FromRole="consignatario" ToRole="consignatario1" />
+          <NavigationProperty Name="consignatario2" Relationship="latamModel.FK_consignatario_consignatario" FromRole="consignatario1" ToRole="consignatario" />
+        </EntityType>
+        <Association Name="FK_consignatario_consignatario">
+          <End Type="latamModel.consignatario" Role="consignatario" Multiplicity="1" />
+          <End Type="latamModel.consignatario" Role="consignatario1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="consignatario">
+              <PropertyRef Name="idConsignatario" />
+            </Principal>
+            <Dependent Role="consignatario1">
+              <PropertyRef Name="idConsignatario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sector1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="latamModelStoreContainer" CdmEntityContainer="latamEntities">
+          <FunctionImportMapping FunctionImportName="buscaReceiptUsuario" FunctionName="latamModel.Store.buscaReceiptUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="latamModel.buscaReceiptUsuario_Result">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="TotalPieces" ColumnName="TotalPieces" />
+                <ScalarProperty Name="TotalVolumeWeight" ColumnName="TotalVolumeWeight" />
+                <ScalarProperty Name="TotalVolume" ColumnName="TotalVolume" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pa_ususarioxemail" FunctionName="latamModel.Store.pa_ususarioxemail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="latamModel.pa_ususarioxemail_Result">
+                <ScalarProperty Name="idConsignatario" ColumnName="idConsignatario" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Add1" ColumnName="Add1" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="sector" ColumnName="sector" />
+                <ScalarProperty Name="direccionUsuario" ColumnName="direccionUsuario" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="sexoUsuario" ColumnName="sexoUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ExceptionLoggingToDataBase" FunctionName="latamModel.Store.ExceptionLoggingToDataBase" />
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="latamModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="addressType" ColumnName="addressType" />
+                <ScalarProperty Name="contactemail2" ColumnName="contactemail2" />
+                <ScalarProperty Name="contactemail1" ColumnName="contactemail1" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="entityGUID" ColumnName="entityGUID" />
+                <ScalarProperty Name="codeAddress" ColumnName="codeAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Administradores">
+            <EntityTypeMapping TypeName="latamModel.Administradores">
+              <MappingFragment StoreEntitySet="Administradores">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentClientRel">
+            <EntityTypeMapping TypeName="latamModel.AgentClientRel">
+              <MappingFragment StoreEntitySet="AgentClientRel">
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="codeAgentClient" ColumnName="codeAgentClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ciudades">
+            <EntityTypeMapping TypeName="latamModel.ciudades">
+              <MappingFragment StoreEntitySet="ciudades">
+                <ScalarProperty Name="capital" ColumnName="capital" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="configuraciones">
+            <EntityTypeMapping TypeName="latamModel.configuraciones">
+              <MappingFragment StoreEntitySet="configuraciones">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="configuracion" ColumnName="configuracion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomLog">
+            <EntityTypeMapping TypeName="latamModel.CustomLog">
+              <MappingFragment StoreEntitySet="CustomLog">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+                <ScalarProperty Name="RequestUri" ColumnName="RequestUri" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="direcciones">
+            <EntityTypeMapping TypeName="latamModel.direcciones">
+              <MappingFragment StoreEntitySet="direcciones">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entities">
+            <EntityTypeMapping TypeName="latamModel.Entities">
+              <MappingFragment StoreEntitySet="Entities">
+                <ScalarProperty Name="ExporterIDType" ColumnName="ExporterIDType" />
+                <ScalarProperty Name="ExporterID" ColumnName="ExporterID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="IsPrepaid" ColumnName="IsPrepaid" />
+                <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="entityCode" ColumnName="entityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estados">
+            <EntityTypeMapping TypeName="latamModel.estados">
+              <MappingFragment StoreEntitySet="estados">
+                <ScalarProperty Name="iso_3166_2" ColumnName="iso_3166-2" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventDefinition">
+            <EntityTypeMapping TypeName="latamModel.EventDefinition">
+              <MappingFragment StoreEntitySet="EventDefinition">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OwnerNumber" ColumnName="OwnerNumber" />
+                <ScalarProperty Name="IncludeInTracking" ColumnName="IncludeInTracking" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="latamModel.Events">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="OwnerGUID" ColumnName="OwnerGUID" />
+                <ScalarProperty Name="OwnerNumber" ColumnName="OwnerNumber" />
+                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
+                <ScalarProperty Name="IncludeInTracking" ColumnName="IncludeInTracking" />
+                <ScalarProperty Name="EventDefinitionName" ColumnName="EventDefinitionName" />
+                <ScalarProperty Name="EventCode" ColumnName="EventCode" />
+                <ScalarProperty Name="WRCode" ColumnName="WRCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="line">
+            <EntityTypeMapping TypeName="latamModel.line">
+              <MappingFragment StoreEntitySet="line">
+                <ScalarProperty Name="turn" ColumnName="turn" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mensajes">
+            <EntityTypeMapping TypeName="latamModel.mensajes">
+              <MappingFragment StoreEntitySet="mensajes">
+                <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModeOfTransportation">
+            <EntityTypeMapping TypeName="latamModel.ModeOfTransportation">
+              <MappingFragment StoreEntitySet="ModeOfTransportation">
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="modeTransportationCode" ColumnName="modeTransportationCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notification">
+            <EntityTypeMapping TypeName="latamModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="IsReminder" ColumnName="IsReminder" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SentTo" ColumnName="SentTo" />
+                <ScalarProperty Name="DetailsURL" ColumnName="DetailsURL" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordRecovery">
+            <EntityTypeMapping TypeName="latamModel.PasswordRecovery">
+              <MappingFragment StoreEntitySet="PasswordRecovery">
+                <ScalarProperty Name="IsRecovered" ColumnName="IsRecovered" />
+                <ScalarProperty Name="date_to" ColumnName="date_to" />
+                <ScalarProperty Name="RecoveryKey" ColumnName="RecoveryKey" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTerms">
+            <EntityTypeMapping TypeName="latamModel.PaymentTerms">
+              <MappingFragment StoreEntitySet="PaymentTerms">
+                <ScalarProperty Name="clientGUID" ColumnName="clientGUID" />
+                <ScalarProperty Name="DiscountPaidDays" ColumnName="DiscountPaidDays" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="NetDueDays" ColumnName="NetDueDays" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="codePaymentTerms" ColumnName="codePaymentTerms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="latamModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexo">
+            <EntityTypeMapping TypeName="latamModel.Sexo">
+              <MappingFragment StoreEntitySet="Sexo">
+                <ScalarProperty Name="Sexo1" ColumnName="Sexo" />
+                <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ExceptionLoggingToDataBase">
+            <EntityTypeMapping TypeName="latamModel.Tbl_ExceptionLoggingToDataBase">
+              <MappingFragment StoreEntitySet="Tbl_ExceptionLoggingToDataBase">
+                <ScalarProperty Name="Logdate" ColumnName="Logdate" />
+                <ScalarProperty Name="ExceptionURL" ColumnName="ExceptionURL" />
+                <ScalarProperty Name="ExceptionSource" ColumnName="ExceptionSource" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
+                <ScalarProperty Name="Logid" ColumnName="Logid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="latamModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WareHouseAttach">
+            <EntityTypeMapping TypeName="latamModel.WareHouseAttach">
+              <MappingFragment StoreEntitySet="WareHouseAttach">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="IsImage" ColumnName="IsImage" />
+                <ScalarProperty Name="IsInternal" ColumnName="IsInternal" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
+                <ScalarProperty Name="OwnerGUID" ColumnName="OwnerGUID" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WarehouseReceipts">
+            <EntityTypeMapping TypeName="latamModel.WarehouseReceipts">
+              <MappingFragment StoreEntitySet="WarehouseReceipts">
+                <ScalarProperty Name="LastItemID" ColumnName="LastItemID" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="PieceVolume" ColumnName="PieceVolume" />
+                <ScalarProperty Name="PieceWeight" ColumnName="PieceWeight" />
+                <ScalarProperty Name="VolumeWeight" ColumnName="VolumeWeight" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="ContainedPiecesWeightIncluded" ColumnName="ContainedPiecesWeightIncluded" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="WHRItemID" ColumnName="WHRItemID" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+                <ScalarProperty Name="IsLiquidated" ColumnName="IsLiquidated" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="BillingClient" ColumnName="BillingClient" />
+                <ScalarProperty Name="HasAttachments" ColumnName="HasAttachments" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+                <ScalarProperty Name="ChargeableWeight" ColumnName="ChargeableWeight" />
+                <ScalarProperty Name="TotalVolumeWeight" ColumnName="TotalVolumeWeight" />
+                <ScalarProperty Name="TotalVolume" ColumnName="TotalVolume" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="TotalPieces" ColumnName="TotalPieces" />
+                <ScalarProperty Name="CreatorNetworkID" ColumnName="CreatorNetworkID" />
+                <ScalarProperty Name="DestinationAgent" ColumnName="DestinationAgent" />
+                <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+                <ScalarProperty Name="Shipper" ColumnName="Shipper" />
+                <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+                <ScalarProperty Name="ModeOfTransportCode" ColumnName="ModeOfTransportCode" />
+                <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="codeWR" ColumnName="codeWR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WareHouseReceiptsItems">
+            <EntityTypeMapping TypeName="latamModel.WareHouseReceiptsItems">
+              <MappingFragment StoreEntitySet="WareHouseReceiptsItems">
+                <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+                <ScalarProperty Name="ShipmentType" ColumnName="ShipmentType" />
+                <ScalarProperty Name="LastReceptionNetworkID" ColumnName="LastReceptionNetworkID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="OutShipmentGUID" ColumnName="OutShipmentGUID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="InTask" ColumnName="InTask" />
+                <ScalarProperty Name="NotLoaded" ColumnName="NotLoaded" />
+                <ScalarProperty Name="IsOverstock" ColumnName="IsOverstock" />
+                <ScalarProperty Name="IsPallet" ColumnName="IsPallet" />
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="WarehouseReceiptNumber" ColumnName="WarehouseReceiptNumber" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="InHouseWayBillNumber" ColumnName="InHouseWayBillNumber" />
+                <ScalarProperty Name="InMasterWayBillNumber" ColumnName="InMasterWayBillNumber" />
+                <ScalarProperty Name="OutHouseWayBillNumber" ColumnName="OutHouseWayBillNumber" />
+                <ScalarProperty Name="OutMasterWayBillNumber" ColumnName="OutMasterWayBillNumber" />
+                <ScalarProperty Name="IsContainer" ColumnName="IsContainer" />
+                <ScalarProperty Name="IncludeInSED" ColumnName="IncludeInSED" />
+                <ScalarProperty Name="InShipmentGUID" ColumnName="InShipmentGUID" />
+                <ScalarProperty Name="PackageType" ColumnName="PackageType" />
+                <ScalarProperty Name="PieceVolume" ColumnName="PieceVolume" />
+                <ScalarProperty Name="PieceWeight" ColumnName="PieceWeight" />
+                <ScalarProperty Name="VolumeWeight" ColumnName="VolumeWeight" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="ContainedPiecesWeightIncluded" ColumnName="ContainedPiecesWeightIncluded" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="WHRItemID" ColumnName="WHRItemID" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+                <ScalarProperty Name="IsSummarized" ColumnName="IsSummarized" />
+                <ScalarProperty Name="PieceQuantity" ColumnName="PieceQuantity" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="WarehouseReceiptGUID" ColumnName="WarehouseReceiptGUID" />
+                <ScalarProperty Name="codeWHItem" ColumnName="codeWHItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="lista_estados_ciudades" FunctionName="latamModel.Store.lista_estados_ciudades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="latamModel.lista_estados_ciudades_Result">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="consignatario">
+            <EntityTypeMapping TypeName="latamModel.consignatario">
+              <MappingFragment StoreEntitySet="consignatario">
+                <ScalarProperty Name="infoInMagaya" ColumnName="infoInMagaya" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="isEmailVerified" ColumnName="isEmailVerified" />
+                <ScalarProperty Name="sector" ColumnName="sector" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="AccessPassword" ColumnName="AccessPassword" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="idConsignatario" ColumnName="idConsignatario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sector">
+            <EntityTypeMapping TypeName="latamModel.Sector">
+              <MappingFragment StoreEntitySet="Sector">
+                <ScalarProperty Name="sector1" ColumnName="sector" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

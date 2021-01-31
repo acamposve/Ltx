@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{859DB369-BCCE-41DC-A09F-C8F676DCC360}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administradores.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AgentClientRel.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="buscaReceiptUsuario_Result.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ciudades.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="configuraciones.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="consignatario.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsignatarioData.cs" />
+    <Compile Include="CustomLog.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="direcciones.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DireccionesData.cs" />
+    <Compile Include="Entities.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estados.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventDefinition.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Events.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenericRepository.cs" />
+    <Compile Include="line.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lista_estados_ciudades_Result.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mensajes.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelLatam.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLatam.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelLatam.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelLatam.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLatam.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ModeOfTransportation.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordRecovery.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentTerms.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pa_ususarioxemail_Result.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sector.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sexo.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tbl_ExceptionLoggingToDataBase.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="Users.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AddressViewModel.cs" />
+    <Compile Include="ViewModels\ConsignatarioViewModel.cs" />
+    <Compile Include="ViewModels\DireccionesViewModel.cs" />
+    <Compile Include="ViewModels\EntityViewModel.cs" />
+    <Compile Include="ViewModels\EstadosCiudadesViewModel.cs" />
+    <Compile Include="ViewModels\LoginVIewModel.cs" />
+    <Compile Include="ViewModels\UsuarioViewModel.cs" />
+    <Compile Include="ViewModels\WareHouseReciptsViewModel.cs" />
+    <Compile Include="WareHouseAttach.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WarehouseReceipts.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WareHouseReceiptsItems.cs">
+      <DependentUpon>ModelLatam.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WR.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ModelLatam.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelLatam.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ModelLatam.edmx.diagram">
+      <DependentUpon>ModelLatam.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelLatam.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelLatam.Context.cs</LastGenOutput>
+      <DependentUpon>ModelLatam.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelLatam.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLatam.edmx</DependentUpon>
+      <LastGenOutput>ModelLatam.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{4c1ba7e2-72fe-49ba-9633-a595bd891871}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

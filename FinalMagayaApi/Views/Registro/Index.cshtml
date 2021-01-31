@@ -1,0 +1,348 @@
+﻿@model Data.ViewModels.ConsignatarioViewModel
+@{ Layout = null;
+    var types = ViewBag.TypesList as List<SelectListItem>;
+    var subtypes = ViewBag.SubTypesList as List<SelectListItem>; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>LTX | </title>
+
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="~/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="~/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="~/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="~/vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        function confirmEmail() {
+            var email = document.getElementById("Email").value
+            var confemail = document.getElementById("confemail").value
+            if (email != confemail) {
+                alert('Email Not Matching!');
+            }
+        }
+        function confirmPass() {
+            var pass = document.getElementById("AccessPassword").value
+            var confpass = document.getElementById("confpassword").value
+            if (pass != confpass) {
+                alert('No concuerdan los password!');
+            }
+        }
+    </script>
+</head>
+
+<body class="nav-md">
+
+
+    @if (ViewBag.Error != null)
+    {
+        <script>
+            swal("Error!", "Este email ya esta registrado en nuestra base de datos, intente recuperar su password o intente con un email distinto!", "error");
+        </script>
+    }
+
+
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        if (ViewBag.Message != null)
+        {
+
+            <table width="660" border="0" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
+                <tr>
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td height="130" align="center" bgcolor="#f5f6f7"><img src="http://ltx.com.ve/images/logo-ltx---final-201912.png" width="231" height="72" /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table border="0" align="center" cellpadding="30" cellspacing="0">
+                            <tr>
+                                <td valign="top" bgcolor="#FFFFFF">
+                                    <span style="font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif">
+                                        Gracias por registrarte en <strong>
+                                            LTX.<br>
+                                        </strong>
+                                        En breves momentos recibiras un correo con las instrucciones para activar tu cuenta.
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="20" class="txt1">
+                            <tr>
+                                <td height="100" align="center" bgcolor="#f5f6f7">
+                                    <span style="font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif">
+                                        Doral - Estados Unidos <br>
+                                        8000 NW 29th St, Doral, FL 33122<br>
+                                        +1(305)640-5391<br>
+                                        +1(305)640-5639<br>
+
+                                        Caracas - Venezuela<br>
+                                        +58(212)655-0603<br>
+
+                                        <a href="mailto:info@ltx.com.ve" class="txt1">info@ltx.com.ve</a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+    else
+    {
+
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td height="100"><img src="http://ltx.com.ve/images/logo-ltx---final-201912.png"></td>
+                    <td align="right"><img src="img/slogan_black.png" width="201" height="16"></td>
+                </tr>
+            </table>
+            <div id="exito" style="display:none" align="center"> Sus datos han sido recibidos con &eacute;xito. En 24 horas podr&aacute; ingresar al sistema por la direcci&oacute;n: <a href="http://www.latamxpress.com/app">http://www.latamxpress.com/app</a></div>
+            <div id="fracaso" style="display:none"> Se ha producido un error durante el env&iacute;o de datos. </div>
+            <hr color="#CCCCCC">
+            <div class="container body">
+                <div class="main_container">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Registrar Usuario</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li>
+                                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Settings 1</a>
+                                                <a class="dropdown-item" href="#">Settings 2</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <br />
+                                    <form class="form-horizontal form-label-left">
+
+                                        <div class="form-group row ">
+                                            <label class="control-label col-md-3 col-sm-3 ">Nombre(*)</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.EditorFor(model => model.Name, new {htmlAttributes = new { @class = "form-control" }})
+                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label class="control-label col-md-3 col-sm-3 ">Apellido (*)</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label class="control-label col-md-3 col-sm-3 ">Email (*)</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label class="control-label col-md-3 col-sm-3 ">Confirmar Email (*)</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                <input name="confemail" id="confemail" onblur="confirmEmail();" type="text" class="form-control" style="width:100%;" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 col-sm-3 ">Password</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.PasswordFor(model => model.AccessPassword, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.AccessPassword, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 col-sm-3 ">Confirmar Password</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label class="control-label col-md-3 col-sm-3 ">Identificacion (*)</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.EditorFor(model => model.cedula, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.cedula, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <label class="control-label col-md-3 col-sm-3 ">Telefono (*)</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 col-sm-3 ">Sexo</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.DropDownListFor(model => model.Sexo, new List<SelectListItem>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 {
+                                        new SelectListItem() {Text = "Masculino", Value="1"},
+                                        new SelectListItem() {Text = "Femenino", Value="2"},
+                                        new SelectListItem() {Text = "Otro", Value="3"}
+                                        }, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 col-sm-3 ">Direccion</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.TextAreaFor(model => model.Add1, new { @class = "form-control", @cols = 30, @rows = 5 })
+                                                @Html.ValidationMessageFor(model => model.Add1, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 col-sm-3 ">Sector</label>
+                                            <div class="col-md-9 col-sm-9 ">
+                                                @Html.DropDownListFor(model => model.Sector, new SelectList(Model.listaSectores, "Sector1", "Sector1"), htmlAttributes: new { @class = "form-control", id = "Country" })
+                                                @Html.ValidationMessageFor(model => model.Sector, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-3 col-sm-3 ">Ciudad/Estado</label>
+                                            <div class="col-md-9 col-sm-9 ">
+
+                                                <select class="select2_group form-control" name="CityId" id="CityId">
+                                                    @foreach (var x in Model.listaEstados)
+                                                    {
+                                                        <optgroup label="@x.estado">
+                                                            @foreach (var y in Model.listaCiudades)
+                                                            {
+                                                                if (y.id_estado == x.id_estado)
+                                                                {
+                                                                    <option value="@y.id_ciudad">@y.ciudad</option>
+
+                                                                }
+                                                            }
+                                                        </optgroup>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-sm-9  offset-md-3">
+                                                <div class="col-md-12" style="text-align: right;"><input name="" type="submit" class="btn btn-success" value="Registrar"></div>
+
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /page content -->
+                    <!-- footer content -->
+                    <footer>
+                        <div class="pull-right">
+                            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </footer>
+                    <!-- /footer content -->
+                </div>
+            </div>
+        }
+
+    }
+
+
+
+
+
+
+    <!-- jQuery -->
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/vendors/moment/min/moment.min.js"></script>
+    <script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="~/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="~/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="~/vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="~/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="~/vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="~/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="~/vendors/autosize/dist/autosize.min.js"></script>
+
+
+    <!-- starrr -->
+    <script src="~/vendors/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/build/js/custom.min.js"></script>
+
+</body>
+</html>

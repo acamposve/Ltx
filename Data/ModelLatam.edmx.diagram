@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3fe00d6a09c4a1ba6ae50b15b2ab498" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="latamModel.Address" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="latamModel.Administradores" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="latamModel.AgentClientRel" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="latamModel.ciudades" Width="1.5" PointX="3" PointY="2.25" />
+        <EntityTypeShape EntityType="latamModel.configuraciones" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="latamModel.CustomLog" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="latamModel.direcciones" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="latamModel.Entities" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="latamModel.estados" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="latamModel.EventDefinition" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="latamModel.Events" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="latamModel.line" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="latamModel.mensajes" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="latamModel.ModeOfTransportation" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="latamModel.Notification" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="latamModel.PasswordRecovery" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="latamModel.PaymentTerms" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="latamModel.Roles" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="latamModel.Sexo" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="latamModel.Tbl_ExceptionLoggingToDataBase" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="latamModel.Users" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="latamModel.WareHouseAttach" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="latamModel.WarehouseReceipts" Width="1.5" PointX="12.75" PointY="9.75" />
+        <EntityTypeShape EntityType="latamModel.WareHouseReceiptsItems" Width="1.5" PointX="14.75" PointY="0.75" />
+        <AssociationConnector Association="latamModel.FK_ciudades_estados" />
+        <EntityTypeShape EntityType="latamModel.consignatario" Width="1.5" PointX="9.375" PointY="14.75" />
+        <AssociationConnector Association="latamModel.FK_consignatario_consignatario" />
+        <EntityTypeShape EntityType="latamModel.Sector" Width="1.5" PointX="5.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

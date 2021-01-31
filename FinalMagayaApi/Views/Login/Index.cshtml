@@ -1,0 +1,184 @@
+﻿@model Data.consignatario
+@{ Layout = null; }
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="~/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="login">
+
+
+    @if (ViewBag.Message != null)
+    {
+<script>
+    swal("Error!", "Este email no ha sido verificado, revise su email o su carpeta SPAM!", "error");
+</script>
+}
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        if (ViewBag.Message != null)
+        {
+<div class="alert alert-success">
+    <strong>Success!</strong>@ViewBag.Message
+</div>
+
+                    <table width="660" border="0" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td height="130" align="center" bgcolor="#f5f6f7">
+                                            <img src="http://ltx.com.ve/images/logo-ltx---final-201912.png" width="231" height="72" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table border="0" align="center" cellpadding="30" cellspacing="0">
+                                    <tr>
+                                        <td valign="top" bgcolor="#FFFFFF">
+                                            <span style="font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif">
+                                                Gracias por registrarte en <strong>
+                                                    LTX.<br>
+                                                </strong>
+                                                En breves momentos recibiras un correo con las instrucciones para activar tu cuenta.
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="20" class="txt1">
+                                    <tr>
+                                        <td height="100" align="center" bgcolor="#f5f6f7">
+                                            <span style="font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif">
+                                                Doral - Estados Unidos <br>
+                                                8000 NW 29th St, Doral, FL 33122<br>
+                                                +1(305)640-5391<br>
+                                                +1(305)640-5639<br>
+
+                                                Caracas - Venezuela<br>
+                                                +58(212)655-0603<br>
+
+                                                <a href="mailto:info@ltx.com.ve" class="txt1">info@ltx.com.ve</a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table> }
+                                }
+                                else
+                                {
+                                    using (Html.BeginForm())
+                                    {
+                    @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                            <div>
+                                                                <a class="hiddenanchor" id="signup"></a>
+                                                                <a class="hiddenanchor" id="signin"></a>
+
+                                                                <div class="login_wrapper">
+                                                                    <div class="animate form login_form">
+                                                                        <section class="login_content">
+                                                                            <form>
+                                                                                <h1>Login Form</h1>
+                                                                                <div>
+                                                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control top" }, required = "required" })
+                                                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                                <div>
+                                                                                    @Html.PasswordFor(model => model.AccessPassword, new { @class = "form-control bottom", required = "required" })
+                                                                                    @Html.ValidationMessageFor(model => model.AccessPassword, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                                <div>
+                                                                                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Ingresar">
+                                                                                    @Html.ActionLink("Recuperar Contraseña", "RecuperarPass", "Login")
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                                <div class="separator">
+                                                                                    <p class="change_link">
+                                                                                        New to site?
+                                                                                        <a href="#signup" class="to_register"> Create Account </a>
+                                                                                    </p>
+
+                                                                                    <div class="clearfix"></div>
+                                                                                    <br />
+
+                                                                                    <div>
+                                                                                        <img src="http://ltx.com.ve/images/logo-ltx---final-201912.png" width="231" height="72" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </section>
+                                                                    </div>
+
+                                                                    <div id="register" class="animate form registration_form">
+                                                                        <section class="login_content">
+                                                                            <form>
+                                                                                <h1>Create Account</h1>
+                                                                                <div>
+                                                                                    <input type="text" class="form-control" placeholder="Username" required="" />
+                                                                                </div>
+                                                                                <div>
+                                                                                    <input type="email" class="form-control" placeholder="Email" required="" />
+                                                                                </div>
+                                                                                <div>
+                                                                                    <input type="password" class="form-control" placeholder="Password" required="" />
+                                                                                </div>
+                                                                                <div>
+                                                                                    <a class="btn btn-default submit" href="index.html">Submit</a>
+                                                                                </div>
+
+                                                                                <div class="clearfix"></div>
+
+                                                                                <div class="separator">
+                                                                                    <p class="change_link">
+                                                                                        Already a member ?
+                                                                                        <a href="#signin" class="to_register"> Log in </a>
+                                                                                    </p>
+
+                                                                                    <div class="clearfix"></div>
+                                                                                    <br />
+
+                                                                                    <div>
+                                                                                        <h1><i class="fa fa-paw"></i> LTX!</h1>
+                                                                                        <p>©2016 All Rights Reserved. LTX</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </section>
+                                                                    </div>
+                                                                </div>
+                                                            </div>}
+                                                                        }
+</body>
+</html>

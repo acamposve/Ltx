@@ -1,0 +1,157 @@
+﻿@model Data.consignatario
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Recover Password</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link href="~/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+
+    <!-- icheck bootstrap -->
+    <link href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Theme style -->
+    <link href="~/dist/css/adminlte.min.css" rel="stylesheet" />
+
+</head>
+<body class="hold-transition login-page">
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        if (ViewBag.Message != null)
+        {
+
+
+
+            <script>
+                swal({
+                    title: "Correo enviado!",
+                    text: "Se ha procesado su solicitud!",
+                    icon: "success",
+                });
+
+            </script>
+
+
+
+            <div class="form-signin">
+
+                <div class="text-center">
+                    <img src="~/assets/img/LogoLTXColor.png" alt="Logo" width="91" height="28" />
+                </div>
+
+                <hr>
+
+                <div class="tab-content">
+
+                    <div id="login" class="tab-pane active">
+
+
+
+                        <p class="text-muted text-center">Contraseña modificada con exito!, puede cerrar esta ventana.</p>
+                        <p class="text-muted text-center">@Html.ActionLink("Ir al login", "Index", "Login")</p>
+
+
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+
+
+
+            </div>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="login-box">
+                <div class="login-logo">
+                    <img src="~/assets/img/LogoLTXColor.png" alt="Logo" width="91" height="28" />
+                </div>
+                <!-- /.login-logo -->
+                <div class="card">
+                    <div class="card-body login-card-body">
+                        <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>
+
+
+
+                        <div class="input-group mb-3">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control top" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            @Html.PasswordFor(model => model.AccessPassword, new { @class = "form-control top" })
+                            @Html.ValidationMessageFor(model => model.AccessPassword, "", new { @class = "text-danger" })
+
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+
+                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Cambiar">
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
+
+
+                    </div>
+                    <!-- /.login-card-body -->
+                </div>
+            </div> <!-- /.login-box -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+    }
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+
+
+</body>
+</html>

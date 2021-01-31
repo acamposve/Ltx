@@ -1,0 +1,168 @@
+﻿@model List<Data.ViewModels.WareHouseReciptsViewModel>
+@{ ViewBag.Title = "Pendientes"; }
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Tables <small>Some examples to get you started</small></h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row" style="display: block;">
+
+
+
+
+
+
+            <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Table design <small>Custom design</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Settings 1</a>
+                                    <a class="dropdown-item" href="#">Settings 2</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th class="column-title">Recibo</th>
+                                        <th class="column-title">Status</th>
+                                        <th class="column-title">Fecha </th>
+                                        <th class="column-title">Shipper</th>
+                                        <th class="column-title">Piezas </th>
+                                        <th class="column-title">Peso</th>
+                                        <th class="column-title">Peso-Volumétrico</th>
+                                        <th class="column-title">Volúmen</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        loadData();
+
+    });
+
+
+
+    function loadData() {
+        $.ajax({
+            url: "ListPending",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+                $.each(result, function (key, item) {
+                    html += '<tr>';
+
+                    html += '<td>' + item.Number + '</td>';
+                    html += '<td>' + item.Status + '</td>';
+                    html += '<td>' + item.CreatedOn + '</td>';
+                    html += '<td>' + item.Shipper + '</td>';
+                    html += '<td>' + item.TotalPieces + '</td>';
+                    html += '<td>' + item.TotalWeight + '</td>';
+                    html += '<td>' + item.TotalVolumeWeight + '</td>';
+                    html += '<td>' + item.TotalVolume + '</td>';
+
+                    html += '<td><a href="#" onclick="return getbyID(' + item.codeWR + ')">Edit</a> | <a href="#" onclick="Delele(' + item.codeWR + ')">Delete</a></td>';
+                    html += '</tr>';
+                });
+                $('.tbody').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+    //Function for getting the Data Based upon Employee ID
+    function getbyID(EmpID) {
+        alert("entro");
+
+
+        $('#Name').css('border-color', 'lightgrey');
+        $('#Direccion').css('border-color', 'lightgrey');
+        $('#State').css('border-color', 'lightgrey');
+        $('#City').css('border-color', 'lightgrey');
+        $('#Sector').css('border-color', 'lightgrey');
+        $.ajax({
+            url: "getbyID/" + EmpID,
+            typr: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                $('#Id').val(result.Id);
+                $('#Name').val(result.Name);
+                $('#Direccion').val(result.Direccion);
+                $('#State').val(result.State);
+                $('#City').val(result.City);
+                $('#Sector').val(result.Sector);
+
+                $('#myModal').modal('show');
+                $('#btnUpdate').show();
+                $('#btnAdd').hide();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+        return false;
+    }
+</script>
